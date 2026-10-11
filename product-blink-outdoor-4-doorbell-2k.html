@@ -54,6 +54,10 @@ footer{background:var(--navy);color:#cdd9f5;padding:36px 0;margin-top:40px;font-
 .dd-i{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:12px;text-decoration:none;color:var(--text)}.dd-i:hover{background:var(--bg)}
 .dd-i .ic{font-size:22px}.dd-i small{display:block;color:var(--muted);font-size:13px;line-height:1.3}
 @media(max-width:760px){.has-dd{width:100%}.dd-btn{width:100%;text-align:left;font-weight:700;padding:12px;font-size:16px}.dd-panel,.has-dd.open .dd-panel.wide{position:static;box-shadow:none;border:0;border-top:1px solid var(--line);border-radius:0;min-width:0;grid-template-columns:1fr}nav .btn{text-align:center;margin-top:8px;width:100%}}
+.who{position:fixed;right:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center}.who a{display:flex}
+.who img{width:62px;height:62px;border-radius:50%;object-fit:cover;border:3px solid var(--yellow);box-shadow:0 6px 18px rgba(0,0,0,.28);background:#fff}.who img+img{margin-left:-18px}
+.who button{position:absolute;top:-9px;right:-7px;width:24px;height:24px;border-radius:50%;border:0;background:var(--navy);color:#fff;font-size:15px;line-height:1;cursor:pointer}
+@media(min-width:900px){.who{right:24px;bottom:24px}.who img{width:88px;height:88px}}
 </style></head><body>
 <div class="bar">New product discoveries added regularly. Prices are never shown unless verified.</div>
 <header><div class="hd">
@@ -65,14 +69,16 @@ footer{background:var(--navy);color:#cdd9f5;padding:36px 0;margin-top:40px;font-
 </div></header>
 <main id="app" tabindex="-1"><div class="wrap"><h1>Blink Outdoor 4 + 2K+ Battery Doorbell</h1><p>Wireless home security: an outdoor camera plus a battery doorbell.</p><p>Details come from the product listing and promo posts. Please check the Amazon page for current specifications, price and reviews.</p><ul><li>Outdoor 4 camera and 2K+ battery doorbell bundle</li><li>Two-year battery 1080p camera and 2K battery doorbell (per the Amazon listing)</li><li>Not ideal for 24/7 continuous recording or weak outdoor Wi-Fi</li></ul><p>Sold on Amazon. Check the marketplace for the current price. As an Amazon Associate, I earn from qualifying purchases.</p><p><a href="/shop">All products</a></p></div></main>
 <footer><div class="wrap"><div class="fg" id="foot"></div></div></footer>
+<aside class="who" id="who" aria-label="The person behind Bilal's Best Buys"><a href="/about" title="About Bilal's Best Buys"><img src="/bilal.webp" alt="Bilal" width="88" height="88"><img src="/family.webp" alt="Bilal's daughter" width="88" height="88"></a><button type="button" aria-label="Hide photos" onclick="hideWho()">&times;</button></aside>
 <script>
 /* ============ 1. SITE CONFIG (edit here) ============ */
 const SITE={name:"Bilal's Best Buys",slogan:"Honest Reviews. Best Deals.",tagline:"Smart Shopping, Better Life.",
  logoUrl:"/logo.png", /* Paste your logo as a data: URI or hosted image URL here. Empty = temporary "B" placeholder. */
- contactEmail:"mbilal10728@gmail.com",whatsapp:"+971569303518",
+ contactEmail:"mbilal10728@gmail.com",whatsapp:"+971569303518",web3formsKey:"",
  social:{YouTube:"https://www.youtube.com/@BilalBestBuys",Facebook:"https://www.facebook.com/share/1JLpcULsw6/",Instagram:"https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=4gijiex"},
  instagramHandle:"@bilalbestbuys",
  amazonDisclosure:"As an Amazon Associate, I earn from qualifying purchases."};
+const PRIV=SITE.web3formsKey?"We have no accounts or checkout. If you send a message through the contact form or sign up for the newsletter, your name, email address and message are sent to the site owner through the Web3Forms form service so we can reply. Marketplace sites you visit have their own privacy policies. Contact us to ask for your details to be deleted.":"This site does not currently store personal data. Marketplace sites you visit have their own privacy policies.";
 const NAV=[["Home","/"],["Shop Best Buys","/shop"],["Categories","/categories"],["Buying Guides","/guides"],["About Us","/about"],["Contact","/contact"]];
 const CATS=[["electronics","Electronics","🎧"],["smart-home","Smart Home","💡"],["home-kitchen","Home & Kitchen","🍳"],["beauty","Beauty & Personal Care","🧴"],["travel","Travel Essentials","🧳"],["fitness","Fitness & Lifestyle","🏃"],["accessories","Accessories","⌚"],["gifts","Gifts & Trending Finds","🎁"]];
 /* ============ 2. PRODUCTS (add/edit/remove here) ============
@@ -126,13 +132,18 @@ const setMeta=(t)=>{const m=(q,k,v)=>{const e=document.querySelector(q);if(e)e.s
 const page=(t,h,body)=>{document.title=t;const back=(location.pathname!="/"&&location.pathname!="/index.html")?`<p style="margin:16px 0 0"><button class="btn blue" onclick="goBack()">← Back</button></p>`:"";app.innerHTML=`<div class="wrap">${back}${h||""}${body}</div>`;scrollTo(0,0);setMeta(t)};
 const goBack=()=>history.length>1?history.back():go("/");
 const newsletter=()=>`<div class="nl"><h2>Get new finds by email</h2><p>Occasional product discoveries. Unsubscribe any time.</p><form onsubmit="return sub(event)" novalidate><input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required><label style="font-size:13px;width:100%"><input type="checkbox" name="c"> I agree to receive emails and accept the <a href="/privacy" style="color:var(--yellow)">Privacy Policy</a>.</label><button class="btn">Subscribe</button></form><div class="msg" role="status" aria-live="polite"></div></div>`;
+async function send(m,d){if(!SITE.web3formsKey){m.className="msg ok";m.textContent="Demo mode: nothing was sent or stored. A form service has not been connected yet.";return}
+ m.className="msg";m.textContent="Sending...";
+ try{const r=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:SITE.web3formsKey,...d})}),j=await r.json();
+ if(!j.success)throw new Error(j.message);m.className="msg ok";m.textContent="Thank you! Your "+(d.subject.startsWith("News")?"signup":"message")+" was sent."}
+ catch(x){m.className="msg err";m.textContent="Sorry, it could not be sent. Please try again later or email us directly."}}
 function sub(e){e.preventDefault();const f=e.target,m=f.parentNode.querySelector(".msg");const em=f.email.value.trim();
  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.className="msg err";m.textContent="Please enter a valid email address.";return false}
  if(!f.c.checked){m.className="msg err";m.textContent="Please tick the consent box to continue.";return false}
- m.className="msg ok";m.textContent="Demo mode: your email was NOT sent or stored. Connect an email provider to go live.";return false}
+ send(m,{subject:"Newsletter signup - "+SITE.name,email:em,message:"Please add this email to the newsletter list."});return false}
 function form2(e){e.preventDefault();const f=e.target,m=f.querySelector(".msg");
  if(!f.n.value.trim()||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.em.value)||f.t.value.trim().length<5){m.className="msg err";m.textContent="Please fill in your name, a valid email and a message.";return false}
- m.className="msg ok";m.textContent="Demo mode: this message was NOT sent. Connect a form service to receive messages.";return false}
+ send(m,{subject:"Contact message - "+SITE.name,name:f.n.value.trim(),email:f.em.value.trim(),message:f.t.value.trim()});return false}
 const R={
 home(){page("Bilal's Best Buys | Honest Reviews. Best Deals.","",`</div>
 <section class="hero"><div class="wrap"><div><h1>Discover Better Products. Shop Smarter.</h1><p>Explore useful gadgets, everyday essentials, and handpicked finds to help you make smarter shopping decisions.</p><p><a class="btn" href="/shop">Explore Best Buys</a> <a class="btn alt" href="/shop?sort=name">Discover Trending Products</a></p></div><div class="vis" style="border:0;background:none"><img src="${SITE.logoUrl}" alt="${SITE.name} official logo" style="max-width:100%;max-height:340px;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))"></div></div></section>
@@ -154,7 +165,7 @@ guides(){page("Buying Guides | "+SITE.name,bc(["Buying Guides"]),`<h1>Buying Gui
 about(){page("About Us | "+SITE.name,bc(["About Us"]),`<h1>About ${SITE.name}</h1><p>${SITE.slogan} ${SITE.tagline}</p><p>We share useful product finds and link you to the marketplace where you can buy them. We are an affiliate publisher: we may earn a commission from qualifying purchases at no extra cost to you.</p><div class="note">Draft text. Add your own story. Only claim product testing if you really did it.</div>`)},
 contact(){page("Contact | "+SITE.name,bc(["Contact"]),`<h1>Contact Us</h1><form onsubmit="return form2(event)" style="display:grid;gap:10px;max-width:480px" novalidate><input name="n" placeholder="Your name" aria-label="Name"><input name="em" type="email" placeholder="Email" aria-label="Email"><textarea name="t" rows="5" placeholder="Message" aria-label="Message"></textarea><button class="btn">Send message</button><div class="msg" role="status" aria-live="polite"></div></form><p>${SITE.contactEmail?`Email: <a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a> · WhatsApp: ${SITE.whatsapp}`:"Contact email not configured yet."}</p>`)},
 disclosure(){page("Affiliate Disclosure | "+SITE.name,bc(["Affiliate Disclosure"]),`<h1>Affiliate Disclosure</h1><div class="note">Starter draft: needs legal review before launch.</div><p>Some links on this site are affiliate links. If you click and buy, we may earn a commission at no extra cost to you. Purchases are completed on the marketplace's own website.</p><p><strong>${SITE.amazonDisclosure}</strong></p>`)},
-privacy(){page("Privacy Policy | "+SITE.name,bc(["Privacy Policy"]),`<h1>Privacy Policy</h1><div class="note">Starter draft: needs legal review before launch.</div><p>This demo site does not currently store personal data. If you connect a newsletter or contact service, list here what you collect, why, who processes it, and how people can request deletion. Marketplace sites you visit have their own policies.</p>`)},
+privacy(){page("Privacy Policy | "+SITE.name,bc(["Privacy Policy"]),`<h1>Privacy Policy</h1><div class="note">Starter draft: needs legal review before launch.</div><p>${PRIV}</p>`)},
 terms(){page("Terms and Conditions | "+SITE.name,bc(["Terms"]),`<h1>Terms and Conditions</h1><div class="note">Starter draft: needs legal review before launch.</div><p>Content is for general information. Prices, availability and product details are set by the marketplaces and can change. We are not the seller and do not process orders or payments.</p>`)},
 nf(){page("Page not found | "+SITE.name,"",`<section class="s" style="text-align:center"><h1>404: Page not found</h1><p>That page doesn't exist.</p><a class="btn blue" href="/">Back to home</a></section>`)}};
 function filt(){const q=($("#fq").value||"").toLowerCase(),c=$("#fc").value,s=$("#fs").value;
@@ -172,4 +183,6 @@ function go(u){history.pushState({},"",u);route()}
 document.addEventListener("click",e=>{const a=e.target.closest("a[href^='/']");if(!a||a.target||e.ctrlKey||e.metaKey||e.shiftKey)return;e.preventDefault();go(a.getAttribute("href"))});
 addEventListener("popstate",route);route();
 $("#foot").innerHTML=`<div>${logoHtml()}<p><strong style="color:#fff">${SITE.name}</strong><br>${SITE.slogan}<br>${SITE.tagline}</p></div>`+MENU.filter(m=>m.t!="Categories").map(m=>`<div><strong style="color:#fff">${m.t}</strong><br>${m.items.map(i=>`<a href="${i[2]}"${i[4]?' target="_blank" rel="noopener"':""}>${i[0]}</a>`).join("<br>")}</div>`).join("")+`<div>${SITE.amazonDisclosure}<br>Affiliate links may earn a commission. Purchases happen on the marketplace's website.</div>`;
+function hideWho(){document.getElementById("who").style.display="none";try{sessionStorage.setItem("whoHidden","1")}catch(e){}}
+try{if(sessionStorage.getItem("whoHidden"))document.getElementById("who").style.display="none"}catch(e){}
 </script></body></html>
