@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bilal’s Best Buys | Honest Reviews. Best Deals.</title>
+<meta name="description" content="Bilal’s Best Buys: handpicked gadgets, everyday essentials and finds, with links to Amazon and Noon. Smart Shopping, Better Life.">
+<link rel="canonical" href="https://bilalsbestbuy.github.io/">
+<style>
+:root{--bg:#0c1633;--bar:#14224d;--card:#16275a;--line:#2a3d7a;--text:#fff;--mute:#aeb9d6;--accent:#0b5bd6;--gold:#ffc72c}
+[data-theme="dark"]{--bg:#0b0f17;--bar:#121826;--card:#171f31;--line:#26314a;--mute:#9aa6b8;--accent:#3b82f6}
+[data-theme="green"]{--bg:#07201a;--bar:#0d3a2f;--card:#0f3a2e;--line:#1d6b55;--mute:#a9cfc3;--accent:#12a37a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5;padding-bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+a{color:inherit;text-decoration:none}
+.notice{background:var(--accent);text-align:center;font-size:14px;padding:8px 12px}
+header{background:var(--bar);padding:14px 16px 16px;border-radius:0 0 28px 28px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;gap:12px}
+.logo{width:54px;height:54px;border-radius:50%;object-fit:cover;background:var(--card);flex:none}
+.brand{font-weight:800;font-size:20px;flex:1}
+.bell{position:relative;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:#fff;font-size:22px;cursor:pointer}
+.badge{position:absolute;top:-4px;right:-4px;background:#e53935;color:#fff;font-size:12px;font-weight:700;min-width:20px;height:20px;border-radius:10px;display:none;align-items:center;justify-content:center;padding:0 5px}
+.panel{display:none;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
+.panel.open{display:block}
+.panel h3{margin:0 0 8px;font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 6px;text-align:center}
+.stat b{display:block;font-size:24px}.stat span{font-size:13px;color:var(--mute)}
+.row{display:flex;gap:10px;margin-top:14px;align-items:center}
+.row label{color:var(--mute);font-size:15px}
+select,input[type=search]{background:var(--card);color:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:16px}
+.search{display:flex;gap:10px;margin-top:12px}.search input{flex:1;min-width:0}
+.search button{background:var(--accent);color:#fff;border:0;border-radius:14px;padding:0 20px;font-weight:700;font-size:16px;cursor:pointer}
+main{padding:0 16px}
+.view{display:none}.view.active{display:block}
+h2.sec{font-size:24px;margin:24px 0 4px}.sub{margin:0 0 14px;color:var(--mute)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:170px;border-radius:24px;overflow:hidden;padding:14px;background-size:cover;background-position:center top}
+.tile::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 25%,rgba(5,8,18,.88))}
+.tile>*{position:relative}
+.ico,.arr{position:absolute;top:12px;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);font-size:19px}
+.ico{left:12px}.arr{right:12px}
+.dash{width:30px;height:4px;border-radius:2px;margin-bottom:8px}
+.tile h3{margin:0;font-size:19px;line-height:1.2;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.hero{margin:28px -16px 0;padding:34px 16px;background:linear-gradient(135deg,#0a3d9e,#0b5bd6)}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(32px,8vw,48px);line-height:1.1;margin:0 0 14px}
+.hero p{font-size:18px;margin:0 0 22px;color:#dbe6ff}
+.btn{display:inline-block;padding:15px 22px;border-radius:16px;font-weight:700;font-size:18px;margin:0 10px 10px 0}
+.b1{background:var(--gold);color:#16203a}.b2{border:2px solid #fff;color:#fff}
+.prod{display:block;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px}
+.prod b{display:block;font-size:17px;margin-bottom:4px}.prod span{color:var(--mute);font-size:15px}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer}details p{color:var(--mute);margin:8px 0 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;text-align:center;margin-top:20px}
+.avatar{width:84px;height:84px;border-radius:50%;object-fit:cover;margin-bottom:10px;background:var(--bg)}
+.btn2{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:14px;padding:13px 22px;font-size:16px;font-weight:700;cursor:pointer}
+.note{color:var(--mute);font-size:14px;margin-top:12px}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-around;background:var(--bar);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));z-index:20}
+.tab{flex:1;max-width:140px;background:none;border:0;color:var(--mute);padding:8px 4px;border-radius:22px;font-size:15px;cursor:pointer}
+.tab span{display:block;font-size:24px;line-height:1.1}
+.tab.active{background:rgba(255,255,255,.12);color:#fff;font-weight:700}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div class="notice">New product discoveries added regularly. Prices are never shown unless verified.</div>
+
+<header>
+  <div class="top">
+    <img class="logo" src="/logo-og.png" alt="Bilal’s Best Buys logo" onerror="this.style.visibility='hidden'">
+    <div class="brand">Bilal’s Best Buys</div>
+    <button class="bell" id="bell" aria-label="Visitors">🔔<span class="badge" id="badge">0</span></button>
+  </div>
+  <div class="panel" id="panel">
+    <h3>Visitors</h3>
+    <div class="stats">
+      <div class="stat"><b data-s="today">–</b><span>Today</span></div>
+      <div class="stat"><b data-s="d7">–</b><span>Last 7 days</span></div>
+      <div class="stat"><b data-s="d30">–</b><span>Last 30 days</span></div>
+    </div>
+  </div>
+  <div class="row"><label for="theme">Theme</label>
+    <select id="theme"><option value="">Royal Blue (logo)</option><option value="dark">Dark</option><option value="green">Emerald</option></select>
+  </div>
+  <form class="search" id="searchForm"><input type="search" id="q" placeholder="Search products…"><button type="submit">Search</button></form>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="view active" id="view-home">
+  <h2 class="sec" id="featured">Featured Categories</h2>
+  <p class="sub"><span id="count">10</span> available</p>
+  <div class="grid" id="tiles"></div>
+
+  <div class="hero">
+    <h1>Discover Better Products. Shop Smarter.</h1>
+    <p>Explore useful gadgets, everyday essentials, and handpicked finds to help you make smarter shopping decisions.</p>
+    <a class="btn b1" href="#featured" id="explore">Explore Best Buys</a>
+    <a class="btn b2" href="#trending">Discover Trending Products</a>
+  </div>
+
+  <h2 class="sec" id="trending">Trending Products</h2>
+  <div id="products"></div>
+
+  <h2 class="sec">Frequently Asked Questions</h2>
+  <details><summary>What is Bilal’s Best Buys?</summary><p>Bilal’s Best Buys is an affiliate website that recommends useful products and links to the marketplace, such as Amazon or Noon, where you can buy them.</p></details>
+  <details><summary>Do you sell products or take payments?</summary><p>No. We do not run a checkout. You complete every purchase on the marketplace’s own website.</p></details>
+  <details><summary>How does this website earn money?</summary><p>Some links are affiliate links. We may earn a commission from qualifying purchases at no extra cost to you. As an Amazon Associate, I earn from qualifying purchases.</p></details>
+  <details><summary>Why don’t you show prices?</summary><p>Prices, ratings and availability change often, so we do not show them here. Check the marketplace page for the current details.</p></details>
+</section>
+
+<!-- DASHBOARD -->
+<section class="view" id="view-dashboard">
+  <h2 class="sec">Dashboard</h2>
+  <div id="dashOut" class="box">
+    <p>Please sign in to see your dashboard.</p>
+    <button class="btn2" data-go="account">Go to Account</button>
+  </div>
+  <div id="dashIn" class="hide">
+    <p class="sub">Welcome, <b id="dashName"></b></p>
+    <div class="stats">
+      <div class="stat"><b data-s="today">–</b><span>Today</span></div>
+      <div class="stat"><b data-s="d7">–</b><span>Last 7 days</span></div>
+      <div class="stat"><b data-s="d30">–</b><span>Last 30 days</span></div>
+    </div>
+    <p class="note">Visitor numbers for this website.</p>
+  </div>
+</section>
+
+<!-- ACCOUNT -->
+<section class="view" id="view-account">
+  <h2 class="sec">Account</h2>
+  <div class="box" id="accOut">
+    <p>Sign in with your Google account.</p>
+    <div id="gbtn" style="display:flex;justify-content:center"></div>
+    <p class="note hide" id="noClient">Google sign-in is not set up yet. Add your Google Client ID in the code (GOOGLE_CLIENT_ID).</p>
+  </div>
+  <div class="box hide" id="accIn">
+    <img class="avatar" id="avatar" alt="Profile photo" referrerpolicy="no-referrer">
+    <h3 id="uname" style="margin:0"></h3>
+    <p class="note" id="uemail" style="margin:4px 0 16px"></p>
+    <button class="btn2" id="signout">Sign out</button>
+  </div>
+</section>
+</main>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="home"><span>🏠</span>Home</button>
+  <button class="tab" data-tab="dashboard"><span>📊</span>Dashboard</button>
+  <button class="tab" data-tab="account"><span>👤</span>Account</button>
+</nav>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+/* ====== SETTINGS: fill these in ====== */
+var GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID";   // from Google Cloud Console
+var UMAMI_SHARE_ID   = "";                         // the code at the end of your Umami Share URL
+/* ===================================== */
+
+var CATS=[
+ ["Electronics","⚡","/category-electronics","#f5a623","linear-gradient(135deg,#1e3c72,#2a5298)",""],
+ ["Smart Home","🏠","/category-smart-home","#4dd0e1","linear-gradient(135deg,#134e5e,#71b280)",""],
+ ["Home & Kitchen","🍳","/category-home-kitchen","#ff8a65","linear-gradient(135deg,#7b4397,#dc2430)",""],
+ ["Beauty & Personal Care","💄","/category-beauty","#f06292","linear-gradient(135deg,#a8326e,#e96443)",""],
+ ["Travel Essentials","✈️","/category-travel","#81d4fa","linear-gradient(135deg,#0f4c81,#3aa6c9)",""],
+ ["Fitness & Lifestyle","🏋️","/category-fitness","#aed581","linear-gradient(135deg,#1f6f4a,#8bc34a)",""],
+ ["Accessories","👜","/category-accessories","#ce93d8","linear-gradient(135deg,#43307a,#8e44ad)",""],
+ ["Gifts & Trending Finds","🎁","/category-gifts","#ffd54f","linear-gradient(135deg,#b24592,#f15f79)",""],
+ ["Women Clothes","👗","/category-women-clothes","#f48fb1","linear-gradient(135deg,#6a1b4d,#c2185b)","/women-summer-bg.jpg"],
+ ["Kids Clothes","🧒","/category-kids-clothes","#80deea","linear-gradient(135deg,#1565c0,#42a5f5)","/kids-summer-bg.jpg"]
+];
+var PRODS=[
+ ["UGREEN 65W GaN Charger (5 Ports)","/product-ugreen-65w-gan-charger","A compact multi-port charger for trips: one charger for all your devices."],
+ ["Blink Outdoor 4 + 2K+ Battery Doorbell","/product-blink-outdoor-4-doorbell-2k","Wireless home security: an outdoor camera plus a battery doorbell."],
+ ["Sennheiser MOMENTUM True Wireless 5","/product-sennheiser-momentum-true-wireless-5","Premium true wireless earbuds with adaptive noise cancellation."],
+ ["AirPods Pro 3 (Amazon Renewed)","/product-airpods-pro-3-renewed","Apple’s noise-cancelling earbuds, listed as Amazon Renewed Premium."],
+ ["Echo Dot Max Stereo Pair (Graphite)","/product-echo-dot-max-stereo-pair","Two Echo Dot Max speakers in one pack for stereo sound and a smart home hub."],
+ ["Apple AirTag (4 Pack)","/product-apple-airtag-4-pack","Item trackers for keys, wallet, bags and luggage."],
+ ["Crest 3D Whitestrips Professional Effects","/product-crest-3d-whitestrips-professional-effects","At-home teeth whitening strips."],
+ ["Apple AirPods Pro (3rd Generation), Renewed","/product-apple-airpods-pro-3rd-generation-renewed","Apple’s wireless earbuds, listed as an Amazon Renewed product."],
+ ["Apple Watch Series 11 (GPS, 46mm), Renewed","/product-apple-watch-series-11-gps-46mm-renewed","A GPS smartwatch with a 46mm case, listed as an Amazon Renewed product."],
+ ["Android 13.0 TV Stick 4K with Voice Remote","/product-android-13-tv-stick-4k","A 4K streaming stick with a voice remote for your TV."],
+ ["Amazon Kindle 16 GB (2024 model), Matcha","/product-amazon-kindle-16gb-2024","An e-reader with 16 GB of storage, in Matcha, without lockscreen ads."],
+ ["NOROCME 192 PCS Cable Management Kit","/product-norocme-cable-management-kit-192pcs","A 192-piece kit to keep cables tidy at your desk or TV area."]
+];
+function $(s){return document.querySelector(s)}
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+/* tiles + products */
+function render(filter){
+ var f=(filter||"").toLowerCase();
+ var tiles=CATS.filter(function(c){return !f||c[0].toLowerCase().indexOf(f)>-1});
+ $("#tiles").innerHTML=tiles.map(function(c){
+  var bg=c[5]?'url("'+c[5]+'"),'+c[4]:c[4];
+  return '<a class="tile" href="'+c[2]+'" style="background-image:'+bg+'"><div class="ico">'+c[1]+'</div><div class="arr">↗</div><div class="dash" style="background:'+c[3]+'"></div><h3>'+esc(c[0])+'</h3></a>';
+ }).join("")||'<p class="sub">No categories found.</p>';
+ $("#count").textContent=tiles.length;
+ var prods=PRODS.filter(function(p){return !f||(p[0]+" "+p[2]).toLowerCase().indexOf(f)>-1});
+ $("#products").innerHTML=prods.map(function(p){return '<a class="prod" href="'+p[1]+'"><b>'+esc(p[0])+'</b><span>'+esc(p[2])+'</span></a>'}).join("")||'<p class="sub">No products found.</p>';
+}
+render();
+$("#searchForm").addEventListener("submit",function(e){e.preventDefault();render($("#q").value.trim());show("home")});
+$("#q").addEventListener("input",function(){render(this.value.trim())});
+
+/* theme */
+var th=store("theme")||"";document.documentElement.setAttribute("data-theme",th);$("#theme").value=th;
+$("#theme").addEventListener("change",function(){document.documentElement.setAttribute("data-theme",this.value);store("theme",this.value)});
+
+/* tabs */
+function show(name){
+ ["home","dashboard","account"].forEach(function(n){$("#view-"+n).classList.toggle("active",n===name)});
+ document.querySelectorAll(".tab").forEach(function(t){t.classList.toggle("active",t.dataset.tab===name)});
+ window.scrollTo(0,0);
+}
+document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){show(t.dataset.tab)})});
+document.querySelectorAll("[data-go]").forEach(function(b){b.addEventListener("click",function(){show(b.dataset.go)})});
+$("#bell").addEventListener("click",function(){$("#panel").classList.toggle("open")});
+
+/* visitor stats (Umami share link) */
+function setStats(o){
+ document.querySelectorAll("[data-s]").forEach(function(el){var v=o[el.dataset.s];el.textContent=(v==null?"–":v)});
+ if(o.today!=null){$("#badge").textContent=o.today;$("#badge").style.display="flex"}
+}
+function val(x){return x&&typeof x==="object"?x.value:x}
+function loadStats(){
+ if(!UMAMI_SHARE_ID)return;
+ var base="https://cloud.umami.is/api";
+ fetch(base+"/share/"+UMAMI_SHARE_ID).then(function(r){return r.json()}).then(function(s){
+  var now=Date.now(),d=new Date();d.setHours(0,0,0,0);
+  var ranges={today:d.getTime(),d7:now-7*864e5,d30:now-30*864e5};
+  var out={},keys=Object.keys(ranges);
+  return Promise.all(keys.map(function(k){
+   return fetch(base+"/websites/"+s.websiteId+"/stats?startAt="+ranges[k]+"&endAt="+now,{headers:{"x-umami-share-token":s.token}})
+    .then(function(r){return r.json()}).then(function(j){out[k]=val(j.visitors)});
+  })).then(function(){setStats(out)});
+ }).catch(function(){});
+}
+loadStats();
+
+/* Google sign-in */
+function parseJwt(t){var p=t.split(".")[1].replace(/-/g,"+").replace(/_/g,"/");return JSON.parse(decodeURIComponent(escape(atob(p))))}
+function applyUser(u){
+ var on=!!u;
+ $("#accOut").classList.toggle("hide",on);$("#accIn").classList.toggle("hide",!on);
+ $("#dashOut").classList.toggle("hide",on);$("#dashIn").classList.toggle("hide",!on);
+ if(on){$("#uname").textContent=u.name||"";$("#uemail").textContent=u.email||"";$("#avatar").src=u.picture||"";$("#dashName").textContent=u.name||""}
+}
+var saved=null;try{saved=JSON.parse(store("user"))}catch(e){}
+applyUser(saved);
+function onCredential(resp){
+ try{var p=parseJwt(resp.credential);var u={name:p.name,email:p.email,picture:p.picture};store("user",JSON.stringify(u));applyUser(u)}catch(e){}
+}
+function initGoogle(){
+ if(GOOGLE_CLIENT_ID==="YOUR_GOOGLE_CLIENT_ID"){$("#noClient").classList.remove("hide");return}
+ if(!window.google||!google.accounts){return setTimeout(initGoogle,400)}
+ google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:onCredential});
+ google.accounts.id.renderButton($("#gbtn"),{theme:"filled_blue",size:"large",text:"signin_with",shape:"pill"});
+}
+initGoogle();
+$("#signout").addEventListener("click",function(){
+ store("user",null);applyUser(null);
+ try{google.accounts.id.disableAutoSelect()}catch(e){}
+});
+</script>
+<script src="/analytics.js" defer></script>
+</body>
+</html>
