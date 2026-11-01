@@ -1,7 +1,7 @@
 /* Bilal's Best Buys - app-style shell. Add to index.html: <script defer src="/app-shell.js"></script> */
 (function(){
 /* ====== SETTINGS ====== */
-var GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID";123456789-abc123.apps.googleusercontent.com
+var GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID"123456789-abc123.apps.googleusercontent.com;
 var UMAMI_SHARE_ID   = "";                      /* code at the end of your Umami Share URL */
 /* ====================== */
 var TILES=[
