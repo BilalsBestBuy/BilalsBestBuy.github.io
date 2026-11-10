@@ -1,5 +1,5 @@
-
-<html lang="en"><head><script src="/clothes-redirect.js"></script><script src="/clothes-redirect.js"></script><script defer src="/category-images.js"></script>
+<!DOCTYPE html>
+<html lang="en"><head><script src="/clothes-redirect.js"></script><script defer src="/category-images.js"></script>
 <meta charset="utf-8">
 <meta name='impact-site-verification' value='b6697be4-84ef-4a03-8eb8-99eb06bbc4a4'>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -107,7 +107,7 @@ const PRODUCTS=[
 
 /* ===== Bags Collection (own stock, WhatsApp orders) ===== */
 const BAGS=[["Monogram Chain Shoulder Bag", 3449, "images/bag-01.jpg"], ["Silver Crystal Buckle Mini Bag", 3449, "images/bag-02.jpg"], ["Blue Monogram Baguette Bag", 3449, "images/bag-03.jpg"], ["Beige Woven Suede Hobo Bag", 1999, "images/bag-04.jpg"], ["Purple Satin Woven Clutch", 1999, "images/bag-05.jpg"], ["Powder Blue Quilted Chain Bag", 3449, "images/bag-06.jpg"], ["Black Quilted Vanity Chain Bag", 3449, "images/bag-07.jpg"], ["Cream Mini Tote with Amber Handles", 3449, "images/bag-08.jpg"], ["Blush Pink Leather Camera Bag", 3449, "images/bag-09.jpg"], ["Denim Monogram Mini Tote", 3449, "images/bag-10.jpg"], ["Chocolate Suede Horsebit Hobo", 3449, "images/bag-11.jpg"], ["Beige Ruched Leather Shoulder Bag", 3449, "images/bag-12.jpg"], ["Black Chevron Quilted Chain Bag", 3449, "images/bag-13.jpg"], ["Teal Quilted Chain Flap Bag", 3449, "images/bag-14.jpg"], ["Crystal Studded Suede Heart Bag", 1999, "images/bag-15.jpg"], ["Natural Raffia Woven Top-Handle Bag", 1999, "images/bag-16.jpg"], ["Gold Python-Texture Clutch Bag", 3449, "images/bag-17.jpg"], ["Mini Python-Texture Top-Handle Bag", 3449, "images/bag-18.jpg"], ["Black Croc-Embossed Crossbody Bag", 3449, "images/bag-19.jpg"], ["Black Bow Quilted Handbag", 3449, "images/bag-20.jpg"]];
-BAGS.forEach((b,i)=>{const id="bag-"+String(i+1).padStart(2,"0");PRODUCTS.push({...P(id,b[0],"bags","Bilal's Fashion Wear","👜",b[1]===3449?"Designer style handbag":"Simple everyday handbag",[]),long:"",image:"/"+b[2],price:b[1],currency:"Rs",demo:false,own:true,metaDescription:b[0]+" from Bilal's Fashion Wear, Rs "+b[1].toLocaleString("en-US")+"."})});
+BAGS.forEach((b,i)=>{const id="bag-"+String(i+1).padStart(2,"0");PRODUCTS.push({...P(id,b[0],"bags","Bilal's Fashion Wear","👜",b[1]===3449?"Designer style handbag":"Simple everyday handbag",[]),long:"",image:"/"+b[2].replace("images/",""),price:b[1],currency:"Rs",demo:false,own:true,metaDescription:b[0]+" from Bilal's Fashion Wear, Rs "+b[1].toLocaleString("en-US")+"."})});
 
 /* ===== Handmade Winter (own handmade crochet, sizes by age, WhatsApp orders) ===== */
 /* PRICES BY AGE: write a number (in Rs) for each age. Leave null = "Price on request". */
