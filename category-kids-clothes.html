@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<html lang="en"><head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kids Clothes | Bilal&rsquo;s Best Buys</title>
-<meta name="description" content="Kids summer and winter collections. View PDF catalogs and order on WhatsApp.">
+<title>Kids Clothes | Bilal’s Best Buys</title>
+<meta name="description" content="Kids summer and winter collections, plus handmade crochet winter wear. View catalogs and order on WhatsApp.">
+<link rel="canonical" href="https://bilalsbestbuy.github.io/category-kids-clothes">
+<link rel="icon" href="/logo.png">
 <style>
-body{margin:0;background:#0f1521;color:#fff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5}
-.wrap{max-width:900px;margin:0 auto;padding:18px 16px 40px}
-a{color:#6ea2ff;text-decoration:none}
-.crumb{color:#9aa6b8;font-size:15px}
-h1{font-size:clamp(30px,7vw,44px);margin:18px 0 10px}
-.sub{color:#9aa6b8;font-size:18px;margin:0 0 22px}
-.card{display:block;text-align:center;padding:42px 20px;margin-bottom:18px;border-radius:28px;background:#171f31;border:1px solid #26314a;color:#fff}
-.card h2{margin:0 0 10px;font-size:26px}
-.card p{margin:0 0 18px;color:#9aa6b8;font-size:18px}
-.card .go{color:#6ea2ff;font-weight:700;font-size:20px}
-.card.photo{background-image:linear-gradient(rgba(10,14,24,.55),rgba(10,14,24,.75)),url("/kids-summer-bg.jpg");background-size:cover;background-position:center top;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;border-color:#3a4a6b}
-.card.photo p{color:#e3e9f4}
-.card.photo h2{text-shadow:0 2px 8px rgba(0,0,0,.6)}
-.foot{color:#9aa6b8;font-size:17px;margin-top:24px}
+:root{--blue:#0757D9;--navy:#082B69;--yellow:#FFC928;--bg:#F6F8FC;--card:#fff;--text:#18213A;--muted:#5b6784;--line:#e3e8f3}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1630;--card:#14214a;--text:#eef2ff;--muted:#a9b5d6;--line:#26376b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--blue)}.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+header{background:var(--card);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;gap:12px;padding:10px 18px;max-width:1120px;margin:auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:800}
+.brand img{height:52px;width:auto}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em}
+.bc{font-size:14px;color:var(--muted);padding:16px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin:18px 0 28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(8,43,105,.12)}
+.card .pic{aspect-ratio:4/3;border-radius:12px;background:linear-gradient(135deg,#dfe9ff,#fff3c4);display:grid;place-items:center;font-size:56px;overflow:hidden}
+.card .pic img{width:100%;height:100%;object-fit:cover}
+.card strong{font-size:18px}.card small{color:var(--muted)}
+.btn{display:inline-block;background:var(--yellow);color:#18213A;font-weight:700;border-radius:10px;padding:10px 16px;text-decoration:none;margin-top:auto;text-align:center}
+.back{display:inline-block;background:var(--blue);color:#fff;font-weight:700;border-radius:10px;padding:10px 16px;text-decoration:none;margin-top:16px}
+footer{background:var(--navy);color:#cdd9f5;padding:28px 0;margin-top:40px;font-size:14px}footer a{color:#fff}
 </style>
-</head>
-<body>
-<div class="wrap">
-<div class="crumb"><a href="/">Home</a> &rsaquo; Kids Clothes</div>
+<script defer src="/analytics.js"></script>
+</head><body>
+<header><div class="hd"><a class="brand" href="/" aria-label="Bilal's Best Buys home"><img src="/logo.png" alt="Bilal's Best Buys logo"><span>Bilal's Best Buys</span></a></div></header>
+<main class="wrap">
+<a class="back" href="/">← Back</a>
+<nav class="bc" aria-label="Breadcrumb"><a href="/">Home</a> › Kids Clothes</nav>
 <h1>Kids Clothes</h1>
-<p class="sub">Choose a collection.</p>
-<a class="card photo" href="/kids-summer"><h2>Summer Collection</h2><p>Light kids suits for summer.</p><span class="go">Browse &rarr;</span></a>
-<a class="card" href="/kids-winter"><h2>Winter Collection</h2><p>Warm stitched fleece suits.</p><span class="go">Browse &rarr;</span></a>
-<p class="foot">Looking for ladies suits? See <a href="/category-women-clothes">Women Clothes</a>.</p>
+<p>Choose a collection.</p>
+<div class="grid">
+<a class="card" href="/kids-summer"><div class="pic"><img src="/kids-summer-bg.jpg" alt="" onerror="this.parentNode.textContent='☀️'"></div><strong>Summer Collection</strong><small>Light kids suits for summer.</small><span class="btn">Browse →</span></a>
+<a class="card" href="/kids-winter"><div class="pic">❄️</div><strong>Winter Collection</strong><small>Warm stitched fleece suits.</small><span class="btn">Browse →</span></a>
+<a class="card" href="/category-handmade-winter"><div class="pic"><img src="/img-red-daisy-frock-set.webp" alt="" onerror="this.parentNode.textContent='🧶'"></div><strong>Handmade Winter</strong><small>Handmade crochet winter wear for babies and kids, 0 to 5 years.</small><span class="btn">Browse →</span></a>
 </div>
-<script src="/analytics.js" defer></script>
-</body>
-</html>
+<p>Looking for ladies suits? See <a href="/category-women-clothes">Women Clothes</a>.</p>
+</main>
+<footer><div class="wrap">As an Amazon Associate, I earn from qualifying purchases.<br>Affiliate links may earn a commission. Purchases happen on the marketplace's website.</div></footer>
+</body></html>

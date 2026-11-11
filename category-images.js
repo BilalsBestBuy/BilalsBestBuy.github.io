@@ -9,9 +9,10 @@
     "travel": "cat-travel.jpg",
     "fitness": "cat-fitness.jpg",
     "accessories": "cat-accessories.jpg",
-    "kids-clothes": "cat-kids-clothes.jpg"
+    "kids-clothes": "cat-kids-clothes.jpg",
+    "bags": "cat-bags.jpg"
   };
-  var RE = /(?:^|[\/#=-])(electronics|smart-home|home-kitchen|beauty|women-clothes|gifts|travel|fitness|accessories|kids-clothes)(?:\.html)?\/?$/;
+  var RE = /(?:^|[\/#=-])(electronics|smart-home|home-kitchen|beauty|women-clothes|gifts|travel|fitness|accessories|kids-clothes|bags)(?:\.html)?\/?$/;
   var SKIP = "header,nav,footer,aside,.bc,.bar,.dd,.menu,#nav";
 
   function run() {
